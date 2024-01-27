@@ -31,7 +31,7 @@ jobs:
   build-aws-infra:
     runs-on: ubuntu-latest
     
-    outputs: # used to reference in Second job
+    outputs: 
       EC2_PRIVATE_IP: ${{ steps.get-private-ip.outputs.ec2_private_ip}} 
       BASTION_PUBLIC_IP: ${{ steps.get-public-ip.outputs.bastion_public_ip}}
        
@@ -39,7 +39,6 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3
     
-    # Unnecessary step, because terraform is already installed on GitHub runner    
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
