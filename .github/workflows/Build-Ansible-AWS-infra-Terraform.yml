@@ -133,8 +133,8 @@ jobs:
        chmod 400 deployer-key.pem
        mkdir -p ~/.ssh
        ssh-keyscan $BASTION_PUBLIC_IP >> ~/.ssh/known_hosts
-       ssh -o StrictHostKeyChecking=no -o ProxyCommand="ssh -i deployer-key.pem -W %h:%p -q ec2-user@$BASTION_PUBLIC_IP" -i deployer-key.pem ec2-user@$EC2_PRIVATE_IP
-       ssh -o ProxyCommand="ssh -i deployer-key.pem -W %h:%p -q ec2-user@$BASTION_PUBLIC_IP" -i deployer-key.pem ec2-user@$EC2_PRIVATE_IP -v
+       ssh -o StrictHostKeyChecking=no -o ProxyCommand="ssh -i deployer-key.pem -W %h:%p -q ubuntu@$BASTION_PUBLIC_IP" -i deployer-key.pem ubuntu@$EC2_PRIVATE_IP
+       ssh -o ProxyCommand="ssh -i deployer-key.pem -W %h:%p -q ubuntu@$BASTION_PUBLIC_IP" -i deployer-key.pem ubuntu@$EC2_PRIVATE_IP -v
         touch hello
         ls -l
       working-directory: ./Ansible
