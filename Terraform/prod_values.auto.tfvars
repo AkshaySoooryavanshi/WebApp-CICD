@@ -11,7 +11,7 @@ private_db_subnet_1_cidr  = "10.0.5.0/24"
 private_db_subnet_2_cidr  = "10.0.6.0/24"
 
 #-------------EC2 Variables Default Values-------------------#
-ami                = "ami-0185600d76ba787f4" 
+ami                = "ami-0e5f882be1900e43b" 
 ec2_instance_type  = "t2.micro"
 #key_name          = "ssh_key_aws"
 #-------------RDS Variables Default Values-------------------#
