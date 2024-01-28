@@ -128,6 +128,8 @@ jobs:
     - name: try just ssh
       if: env.TRIGGER == 'apply'
       run: |
+       echo "$EC2_PRIVATE_SSH_KEY" > AWS-Key-CICD.pem
+
        chmod 400 AWS-Key-CICD.pem
        mkdir -p ~/.ssh
        ssh-keyscan $BASTION_PUBLIC_IP >> ~/.ssh/known_hosts
