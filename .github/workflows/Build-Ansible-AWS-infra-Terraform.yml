@@ -41,7 +41,7 @@ jobs:
     
     # Unnecessary step, because terraform is already installed on GitHub runner    
     - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v2
+      uses: hashicorp/setup-terraform@v3
       with:
         terraform_wrapper: false
  
