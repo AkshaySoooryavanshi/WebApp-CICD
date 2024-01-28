@@ -6,6 +6,7 @@ resource "aws_instance" "bastion_instance_1" {
   key_name                    = "AWS-Key-CICD"
   subnet_id                   = module.network.public_subnet_1_id
   associate_public_ip_address = true
+  user_data                   = base64encode(file("userdata.sh"))
   tags = {
     Name = "Bastion"
   }
