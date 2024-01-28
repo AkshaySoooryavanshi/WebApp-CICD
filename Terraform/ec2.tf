@@ -41,6 +41,7 @@ resource "aws_instance" "application_instance_1" {
   vpc_security_group_ids = [aws_security_group.InstanceSG.id] #########
   key_name               = "AWS-Key-CICD"
   subnet_id              = module.network.private_app_subnet_1_id
+  user_data              = base64encode(file("userdata.sh"))
   tags = {
     Name = "application_instance_1"
   }
@@ -69,6 +70,7 @@ resource "aws_instance" "application_instance_2" {
   vpc_security_group_ids = [aws_security_group.InstanceSG.id] ###########
   key_name               = "AWS-Key-CICD"
   subnet_id              = module.network.private_app_subnet_2_id
+  user_data              = base64encode(file("userdata.sh"))
   tags = {
     Name = "application_instance_2"
   }
