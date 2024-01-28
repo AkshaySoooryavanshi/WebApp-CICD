@@ -125,19 +125,7 @@ jobs:
         sudo add-apt-repository --yes --update ppa:ansible/ansible
         sudo apt -y install ansible
    
-    - name: try just ssh
-      if: env.TRIGGER == 'apply'
-      run: |
-       echo "$EC2_PRIVATE_SSH_KEY" > AWS-Key-CICD.pem
-
-       chmod 400 AWS-Key-CICD.pem
-       mkdir -p ~/.ssh
-       ssh-keyscan $BASTION_PUBLIC_IP >> ~/.ssh/known_hosts
-       ssh -o StrictHostKeyChecking=no -o ProxyCommand="ssh -i deployer-key.pem -W %h:%p -q ubuntu@$BASTION_PUBLIC_IP" -i AWS-Key-CICD.pem ubuntu@$EC2_PRIVATE_IP
-       ssh -o ProxyCommand="ssh -i "deployer-key.pem" ubuntu@$BASTION_PUBLIC_IP" -i AWS-Key-CICD.pem ubuntu@$EC2_PRIVATE_IP -v
-        touch hello
-        ls -l
-      working-directory: ./Ansible
+    
 
     - name: Run Ansible Playbook on Private EC2 Instance.
       if: env.TRIGGER == 'apply'
