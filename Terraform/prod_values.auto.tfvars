@@ -13,7 +13,7 @@ private_db_subnet_2_cidr  = "10.0.6.0/24"
 #-------------EC2 Variables Default Values-------------------#
 ami                = "ami-0e5f882be1900e43b" 
 ec2_instance_type  = "t2.micro"
-#key_name          = "ssh_key_aws"
+key_name          = "githubkeys"
 #-------------RDS Variables Default Values-------------------#
 
 # db_name        = "my_first_db"
