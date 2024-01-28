@@ -24,7 +24,9 @@
         var: my_command_output.stdout_lines
 
     - name: Pull Latest Docker Image     
-      command: docker pull public.ecr.aws/g4x4w1s3/monty-hall-game:e164f5485f753e77c8f919161c6d9f157e43646f
+      command: docker pull akshaysooryavanshi/flaskapp_game:latest
 
     - name: Run Docker container 
-      command: docker run -d --name ECR-Container -p 80:5000 public.ecr.aws/g4x4w1s3/monty-hall-game:e164f5485f753e77c8f919161c6d9f157e43646f
+      command: docker run -d -p 5000:5000 --name my-flask-app akshaysooryavanshi/flaskapp_game:latest
+
+
