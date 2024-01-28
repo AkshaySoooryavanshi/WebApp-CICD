@@ -128,13 +128,11 @@ jobs:
     - name: try just ssh
       if: env.TRIGGER == 'apply'
       run: |
-        echo "$EC2_PRIVATE_SSH_KEY" > AWS-Key-CICD.pem
-        sudo chmod 400 AWS-Key-CICD.pem
-        sudo mkdir ~/.ssh
-        sudo touch ~/.ssh/known_hosts
-        sudo ssh-keyscan $BASTION_PUBLIC_IP >> ~/.ssh/known_hosts
-        ssh -o StrictHostKeyChecking=no -o ProxyCommand="ssh -i AWS-Key-CICD.pem -W %h:%p -q ec2-user@$BASTION_PUBLIC_IP" -i AWS-Key-CICD.pem ec2-user@$EC2_PRIVATE_IP
-        ssh -o ProxyCommand="ssh -i AWS-Key-CICD.pem -W %h:%p -q ec2-user@$BASTION_PUBLIC_IP" -i AWS-Key-CICD.pem ec2-user@$EC2_PRIVATE_IP -v
+       chmod 400 AWS-Key-CICD.pem
+       mkdir -p ~/.ssh
+       ssh-keyscan $BASTION_PUBLIC_IP >> ~/.ssh/known_hosts
+       ssh -o StrictHostKeyChecking=no -o ProxyCommand="ssh -i AWS-Key-CICD.pem -W %h:%p -q ec2-user@$BASTION_PUBLIC_IP" -i AWS-Key-CICD.pem ec2-user@$EC2_PRIVATE_IP
+       ssh -o ProxyCommand="ssh -i AWS-Key-CICD.pem -W %h:%p -q ec2-user@$BASTION_PUBLIC_IP" -i AWS-Key-CICD.pem ec2-user@$EC2_PRIVATE_IP -v
         touch hello
         ls -l
       working-directory: ./Ansible
