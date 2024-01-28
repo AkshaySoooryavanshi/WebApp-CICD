@@ -1,7 +1,7 @@
 #----------------Create ssh key using ssh-keygen command---------------------------
 
 
-resource "aws_key_pair" "ssh_key_variable" {
+resource "aws_key_pair" "AWS-Key-CICD" {
   key_name   = var.key_name
   public_key = var.public_key
 }
